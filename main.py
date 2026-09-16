@@ -2,12 +2,14 @@ import curses
 import cv2
 
 timestamp = 0
+curses.start_color()
 
 def playVideo(stdscr, video, width, height):
   global timestamp
   capturedVideo = cv2.VideoCapture(video)
   success, frame = capturedVideo.read()
   maxFrames = capturedVideo.get(cv2.CAP_PROP_FRAME_COUNT)
+  cv2.resize(frame, (width, height))
   stdscr.clear()
   
   x = 0
@@ -18,6 +20,9 @@ def playVideo(stdscr, video, width, height):
     for y in range(height):
       try:
         for x in range(width):
+          cap.set(cv2.CAP_PROP_POS_FRAMES, timestamp-1)
+          pixelColor = frame[y, x]
+          b, g, r = BGRColor
           stdscr.addstr(y, x, '#')
     timestamp += 1
 
