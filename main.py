@@ -32,5 +32,6 @@ def playVideo(stdscr, video, width, height):
 
   stdscr.clear()
   print(f"Video finished successfully at {str(timestamp)}")
+  return
   
 
