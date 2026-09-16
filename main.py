@@ -24,6 +24,8 @@ def playVideo(stdscr, video, width, height):
           pixelColor = frame[y, x]
           b, g, r = BGRColor
           stdscr.addstr(y, x, '#')
+      except null:
+        return 1
     timestamp += 1
 
   stdscr.clear()
