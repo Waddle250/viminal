@@ -23,7 +23,8 @@ def playVideo(stdscr, video, width, height):
           cap.set(cv2.CAP_PROP_POS_FRAMES, timestamp-1)
           pixelColor = frame[y, x]
           b, g, r = BGRColor
-          stdscr.addstr(y, x, '#')
+          curses.init_color(1, r, g, b)
+          stdscr.addstr(y, x, '██')
       except null:
         return 1
     timestamp += 1
