@@ -1,0 +1,54 @@
+import cv2
+import sys
+import time
+
+timestamp = 0
+
+def playVideo(video, width, height):
+    global timestamp
+    capturedVideo = cv2.VideoCapture(video)
+    
+    fps = capturedVideo.get(cv2.CAP_PROP_FPS)
+    if fps <= 0:
+        fps = 60
+    frameDelay = 1.0 / fps
+
+    maxFrames = int(capturedVideo.get(cv2.CAP_PROP_FRAME_COUNT))
+    
+    print("\033[?25l", end="")
+
+    try:
+        for f in range(maxFrames):
+            success, frame = capturedVideo.read()
+            if not success:
+                break
+                
+            resizedFrame = cv2.resize(frame, (width, height))
+            
+            output = "\033[H" 
+            
+            for y in range(height):
+                for x in range(width):
+                    b, g, r = resizedFrame[y, x]
+                    
+                    output += f"\033[48;2;{r};{g};{b}m  "
+                
+                output += "\033[0m\n"
+            
+            sys.stdout.write(output)
+            sys.stdout.flush()
+            
+            timestamp += 1
+            
+            time.sleep(frameDelay)
+
+    finally:
+        print("\033[0m\033[?25h")
+        print(f"Video finished successfully at frame {str(timestamp)}")
+
+if __name__ == "__main__":
+    if len(sys.argv) < 4:
+        print("Usage: viminal <video_path> <width> <height>")
+        sys.exit(1)
+        
+    playVideo(sys.argv[1], int(sys.argv[2]), int(sys.argv[3]))
