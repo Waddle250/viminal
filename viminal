@@ -40,6 +40,7 @@ def playVideo(video, width, height):
             sys.stdout.flush()
             
             timestamp += 1
+            print(str(timestamp/fps) + "/" + str(maxFrames/fps) + " seconds")
             
             time.sleep(frameDelay)
 
