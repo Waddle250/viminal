@@ -1,5 +1,5 @@
 # Viminal
-A video player for your terminal so you can watch Bad Apple or smth
+A video player for your terminal so you can watch Bad Apple or smth.
 
 ## What is Viminal?
 It's a program made in Python that can play videos and audio in terminals. It's pretty useful if you want to watch a video but don't have the app to and need something smaller.
@@ -9,6 +9,6 @@ In a TTY, you are limited to 16-bit color, and apparently rounding will be used 
 >[!IMPORTANT]
 >Do note that because this is rendering text and assigning it a color at a very high rate, it WILL begin to lag at high resolutions. The sweet spot for weak to mid-range GPUs is around 340-720p, and for high end CPUs I recommend using at the maximum HD or 1080p. By going any higher than your CPU can handle, you:
 >* Put the program at risk of crashing
->* Causing a really big slowdown
+>* Causing a really big slowdown across your whole system.
 >* Your fans going supersonic speeds.
 >* Your laptop getting hot/Your PC becoming an oven.
