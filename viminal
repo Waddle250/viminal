@@ -36,7 +36,7 @@ def playVideo(video, width, height):
                 
                 output += "\033[0m\n"
             
-            sys.stdout.write(output)
+            print(output)
             sys.stdout.flush()
             
             timestamp += 1
