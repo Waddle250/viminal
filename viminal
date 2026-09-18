@@ -11,7 +11,7 @@ def playVideo(video, width, height):
     
     fps = capturedVideo.get(cv2.CAP_PROP_FPS)
     if fps <= 0:
-        fps = 60
+        fps = 30
     frameDelay = 1.0 / fps
 
     maxFrames = int(capturedVideo.get(cv2.CAP_PROP_FRAME_COUNT))
